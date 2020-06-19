@@ -1,3 +1,6 @@
+<?php
+  require_once 'config.php';
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,6 +10,7 @@
   <title>Document</title>
 </head>
 <body>
+  <img src="<?php echo BASE_IMAGES_PATH?>/logo.svg" alt="">
   Hello
 </body>
-</html>`
+</html>
