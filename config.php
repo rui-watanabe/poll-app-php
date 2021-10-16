@@ -6,3 +6,5 @@
   define('BASE_IMAGES_PATH', $match['0'].'/images');
   define('BASE_JS_PATH', $match['0'].'/js');
   define('BASE_CSS_PATH', $match['0'].'/css');
+  define('SOURCE_PATH', __DIR__.'/php/');
+
