@@ -5,6 +5,12 @@
     require_once SOURCE_PATH.'views/login.php';
   }
 
+  function login($id, $pwd) {
+
+  }
+
   function post() {
-    echo 'post method';
+    $id = $_POST['id'] ?? '';
+    $pwd = $_POST['pwd'] ?? '';
+    $result = login($id, $pwd);
   }

@@ -11,9 +11,9 @@
   use db\UserQuery;
   $result = UserQuery::fetchById('test');
 
-  var_dump($result);
+  echo CURRENT_URI;
 
-  $r_path = str_replace(BASE_CONTEXT_PATH, '', $url);
+  $r_path = str_replace(BASE_CONTEXT_PATH, '', CURRENT_URI);
   $method = strtolower($_SERVER['REQUEST_METHOD']);
 
   route($r_path, $method);

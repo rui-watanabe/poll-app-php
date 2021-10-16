@@ -1,2 +1,12 @@
 <h1>Login</h1>
-<!-- <img src="<?php echo BASE_IMAGES_PATH?>/logo.svg" alt=""> -->
+<form action="<?php echo CURRENT_URI; ?>" method="POST">
+  <div>
+    id: <input type="text" name="id">
+  </div>
+  <div>
+    pw: <input type="text" name="pwd">
+  </div>
+  <div>
+    <input type="submit" value="login">
+  </div>
+</form>
