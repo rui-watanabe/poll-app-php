@@ -1,2 +1,10 @@
 <?php
-  require_once SOURCE_PATH.'views/login.php';
+  namespace controller\login;
+
+  function get() {
+    require_once SOURCE_PATH.'views/login.php';
+  }
+
+  function post() {
+    echo 'post method';
+  }
