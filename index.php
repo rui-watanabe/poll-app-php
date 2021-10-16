@@ -3,6 +3,16 @@
 
   require_once SOURCE_PATH.'partials/header.php';
 
+  require_once SOURCE_PATH.'models/user.model.php';
+
+  require_once SOURCE_PATH.'db/datasource.php';
+  require_once SOURCE_PATH.'db/user.query.php';
+
+  use db\UserQuery;
+  $result = UserQuery::fetchById('test');
+
+  var_dump($result);
+
   $r_path = str_replace(BASE_CONTEXT_PATH, '', $url);
   $method = strtolower($_SERVER['REQUEST_METHOD']);
 
@@ -24,5 +34,4 @@
     $fn = "\\controller\\${r_path}\\${method}";
     $fn();
   }
-  
 ?>
