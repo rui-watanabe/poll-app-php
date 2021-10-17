@@ -1,16 +1,19 @@
 <?php
   namespace controller\login;
 
+  use lib\Auth;
+
   function get() {
     require_once SOURCE_PATH.'views/login.php';
   }
 
-  function login($id, $pwd) {
-
-  }
-
   function post() {
-    $id = $_POST['id'] ?? '';
-    $pwd = $_POST['pwd'] ?? '';
-    $result = login($id, $pwd);
+    $id = get_param('id', '');
+    $pwd = get_param('pwd', '');
+
+    if(Auth::login($id, $pwd)) {
+      echo 'auth success';
+    } else {
+      echo 'auth failed';
+    }
   }
