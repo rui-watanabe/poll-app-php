@@ -1,10 +1,12 @@
 <?php
   namespace controller\login;
 
-  use db\UserQuery;
+  use lib\Auth;
+
   function get() {
     require_once SOURCE_PATH.'views/login.php';
   }
+
 
   function login($id, $pwd) {
     $is_success = false;

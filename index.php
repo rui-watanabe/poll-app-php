@@ -1,6 +1,9 @@
 <?php
   require_once 'config.php';
 
+  require_once SOURCE_PATH.'libs/helper.php';
+  require_once SOURCE_PATH.'libs/auth.php';
+
   require_once SOURCE_PATH.'partials/header.php';
 
   require_once SOURCE_PATH.'models/user.model.php';
