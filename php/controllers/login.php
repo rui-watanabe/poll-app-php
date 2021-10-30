@@ -33,9 +33,8 @@
   function post() {
     $id = $_POST['id'] ?? '';
     $pwd = $_POST['pwd'] ?? '';
-    $result = login($id, $pwd);
 
-    if($result) {
+    if(Auth::login($id, $pwd)) {
       echo 'auth success';
     } else {
       echo 'auth failed';

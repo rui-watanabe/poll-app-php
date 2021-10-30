@@ -4,7 +4,7 @@
     id: <input type="text" name="id">
   </div>
   <div>
-    pw: <input type="text" name="pwd">
+    pw: <input type="password" name="pwd">
   </div>
   <div>
     <input type="submit" value="login">
