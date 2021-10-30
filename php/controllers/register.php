@@ -2,17 +2,20 @@
   namespace controller\register;
 
   use lib\Auth;
+  use model\UserModel;
 
   function get() {
     require_once SOURCE_PATH.'views/register.php';
   }
 
   function post() {
-    $id = $_POST['id'] ?? '';
-    $pwd = $_POST['pwd'] ?? '';
-    $nickname = $_POST['nickname'] ?? '';
 
-    if(Auth::regist($id, $pwd, $nickname)) {
+    $user = new UserModel;
+    $user->id = get_param('id', '');
+    $user->pwd = get_param('pwd', '');
+    $user->nickname = get_param('nickname', '');
+
+    if(Auth::regist($user)) {
       echo 'register success';
     } else {
       echo 'register failed';

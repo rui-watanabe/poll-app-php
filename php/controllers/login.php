@@ -31,8 +31,8 @@
   }
 
   function post() {
-    $id = $_POST['id'] ?? '';
-    $pwd = $_POST['pwd'] ?? '';
+    $id = get_param('id', '');
+    $pwd = get_param('pwd', '');
 
     if(Auth::login($id, $pwd)) {
       echo 'auth success';

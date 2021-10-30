@@ -15,15 +15,15 @@
       return $result;
     }
 
-    public static function insert($id, $pwd, $nickname) {
+    public static function insert($user) {
       $db = new DataSource;
       $sql = 'insert into users(id, pwd, nickname) values(:id, :pwd, :nickname);';
-      $pwd = password_hash($pwd, PASSWORD_DEFAULT);
+      $pwd = password_hash($user->pwd, PASSWORD_DEFAULT);
 
       return $db->execute($sql, [
-        ':id' => $id,
-        ':pwd' => $pwd,
-        ':nickname' => $nickname
+        ':id' => $user->id,
+        ':pwd' => $user->pwd,
+        ':nickname' => $user->nickname
       ]);
     }
   }

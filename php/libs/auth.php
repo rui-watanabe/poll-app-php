@@ -22,16 +22,21 @@
       return $is_success;
     }
 
-    public static function regist($id, $pwd, $nickname) {
+    public static function regist($user) {
       $is_success = false;
-      $exist_user = UserQuery::fetchById($id);
+      $exist_user = UserQuery::fetchById($user->id);
   
       if(!empty($exit_user)) {
         echo 'Exit User';
         return false;
       }
       
-      $is_success = UserQuery::insert($id, $pwd, $nickname);
+      $is_success = UserQuery::insert($user);
+
+      if($is_success) {
+        $_SESSION['user'] = $user;
+      }
+
       return $is_success;
     }
   }
