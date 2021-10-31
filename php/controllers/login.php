@@ -10,10 +10,8 @@
 
   function login($id, $pwd) {
     $is_success = false;
-    var_dump($id);
 
     $user = UserQuery::fetchById($id);
-    var_dump($user);
 
     if(!empty($user) && $user->del_flg !== 1) {
       $result = password_verify($pwd, $user->pwd);
@@ -31,8 +29,8 @@
   }
 
   function post() {
-    $id = $_POST['id'] ?? '';
-    $pwd = $_POST['pwd'] ?? '';
+    $id = get_param('id', '');
+    $pwd = get_param('pwd', '');
 
     if(Auth::login($id, $pwd)) {
       echo 'auth success';

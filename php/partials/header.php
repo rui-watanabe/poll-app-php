@@ -7,3 +7,11 @@
   <link rel="stylesheet" href="<?php echo BASE_CSS_PATH?>/style.css">
 </head>
 <body> 
+<?php
+  use lib\Auth;
+
+  if(Auth::isLogin()) {
+    echo 'login';
+  } else {
+    echo 'not login';
+  }
