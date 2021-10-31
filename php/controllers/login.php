@@ -10,10 +10,8 @@
 
   function login($id, $pwd) {
     $is_success = false;
-    var_dump($id);
 
     $user = UserQuery::fetchById($id);
-    var_dump($user);
 
     if(!empty($user) && $user->del_flg !== 1) {
       $result = password_verify($pwd, $user->pwd);

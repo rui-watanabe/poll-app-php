@@ -2,6 +2,7 @@
   namespace lib;
 
   use db\UserQuery;
+  use model\UserModel;
 
   class Auth {
     public static function login($id, $pwd) {
@@ -11,7 +12,7 @@
       if(!empty($user) && $user->del_flg !== 1) {
         if(password_verify($pwd, $user->pwd)) {
           $is_success = true;
-          $_SESSION['user'] = $user;
+          UserModel::setSession($user);
         } else {
           echo 'Unmatch PassWord';
         }
@@ -34,9 +35,18 @@
       $is_success = UserQuery::insert($user);
 
       if($is_success) {
-        $_SESSION['user'] = $user;
+        UserModel::setSession($user);
       }
 
       return $is_success;
+    }
+
+    public static function isLogin() {
+      $user = UserModel::getSession();
+      if(isset($user)) {
+        return true;
+      } else {
+        return false;
+      }
     }
   }

@@ -4,14 +4,14 @@
   require_once SOURCE_PATH.'libs/helper.php';
   require_once SOURCE_PATH.'libs/auth.php';
 
-  require_once SOURCE_PATH.'partials/header.php';
-
+  require_once SOURCE_PATH.'models/abstract.model.php';
   require_once SOURCE_PATH.'models/user.model.php';
 
   require_once SOURCE_PATH.'db/datasource.php';
   require_once SOURCE_PATH.'db/user.query.php';
 
   session_start();
+  require_once SOURCE_PATH.'partials/header.php';
 
   use db\UserQuery;
   $result = UserQuery::fetchById('test');
