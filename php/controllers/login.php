@@ -34,7 +34,9 @@
 
     if(Auth::login($id, $pwd)) {
       echo 'auth success';
+      redirect("");
     } else {
       echo 'auth failed';
+      redirect("login");
     }
   }
