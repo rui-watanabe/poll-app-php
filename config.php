@@ -9,3 +9,5 @@
   define('BASE_CSS_PATH', $match['0'].'/css');
   define('SOURCE_PATH', __DIR__.'/php/');
 
+  define('GO_HOME', 'home');
+  define('GO_REFERER', 'referer');
