@@ -2,6 +2,7 @@
   namespace controller\login;
 
   use lib\Auth;
+  use lib\Msg;
 
   function get() {
     require_once SOURCE_PATH.'views/login.php';
@@ -33,10 +34,10 @@
     $pwd = get_param('pwd', '');
 
     if(Auth::login($id, $pwd)) {
-      echo 'auth success';
+      Msg::push(Msg::INFO, 'auth success');
       redirect(GO_HOME);
     } else {
-      echo 'auth failed';
+      Msg::push(Msg::ERROR, 'auth failed');
       redirect(GO_REFERER);
     }
   }
