@@ -32,6 +32,7 @@
   function post() {
     $id = get_param('id', '');
     $pwd = get_param('pwd', '');
+    Msg::push(Msg::DEBUG, 'debug message');
 
     if(Auth::login($id, $pwd)) {
       Msg::push(Msg::INFO, 'auth success');
