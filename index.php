@@ -7,6 +7,8 @@
   require_once SOURCE_PATH.'models/abstract.model.php';
   require_once SOURCE_PATH.'models/user.model.php';
 
+  require_once SOURCE_PATH.'libs/message.php';
+
   require_once SOURCE_PATH.'db/datasource.php';
   require_once SOURCE_PATH.'db/user.query.php';
 

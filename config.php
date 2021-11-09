@@ -11,3 +11,5 @@
 
   define('GO_HOME', 'home');
   define('GO_REFERER', 'referer');
+
+  define('DEBUG', false);

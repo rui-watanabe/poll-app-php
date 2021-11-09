@@ -18,4 +18,13 @@
     public static function clearSession() {
       static::setSession(null);
     }
+
+    public static function getSessionAndFlush() {
+      try {
+        return static::getSession();
+      } finally {
+        static::clearSession();
+      }
+    }
+
   }
