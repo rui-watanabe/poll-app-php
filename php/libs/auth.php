@@ -3,6 +3,7 @@
 
   use db\UserQuery;
   use model\UserModel;
+  use Throwable;
 
   class Auth {
     public static function login($id, $pwd) {
@@ -57,7 +58,7 @@
       try {
         $user = UserModel::getSession();
       } catch(Throwable $e) {
-        $user = UserModel::clearSession();
+        UserModel::clearSession();
         Msg::push(Msg::DEBUG, $e -> getMessage());
         Msg::push(Msg::ERROR, 'occurred error please login');
         return false;

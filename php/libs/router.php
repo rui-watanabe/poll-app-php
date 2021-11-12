@@ -2,24 +2,28 @@
 
 namespace lib;
 use Throwable;
+// use Error;
 
 function route($rpath, $method) {
-    try {
-      if($rpath === '') { $rpath = 'home'; }
+  try {
+    // throw new Error();
 
-      $target_file = SOURCE_PATH ."controllers/{$rpath}.php";
+    if($rpath === '') { $rpath = 'home'; }
 
-      if(!file_exists($target_file)) { 
-        require_once SOURCE_PATH.'views/404.php'; 
-        return;
-      }
-      require_once $target_file;
+    $target_file = SOURCE_PATH ."controllers/{$rpath}.php";
 
-      $fn = "\\controller\\${rpath}\\${method}";
-      $fn();
-    } catch(Throwable $e) {
-      Msg::push(Msg::DEBUG, $e->getMessage());
-      Msg::push(Msg::ERROR, 'something error');
-      redirect('404');
+    if(!file_exists($target_file)) { 
+      require_once SOURCE_PATH.'views/404.php'; 
+      return;
     }
+    require_once $target_file;
+
+    $fn = "\\controller\\${rpath}\\${method}";
+    $fn();
+  } catch(Throwable $e) {
+    Msg::push(Msg::DEBUG, $e->getMessage());
+    Msg::push(Msg::ERROR, 'something error');
+    redirect('404');
+    // require_once SOURCE_PATH.'views/404.php'; 
   }
+}
