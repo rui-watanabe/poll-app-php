@@ -1,6 +1,7 @@
 <?php
   namespace lib;
   use model\AbstractModel;
+  use Throwable;
 
   class Msg extends AbstractModel {
     protected static $SESSION_NAME = '_msg';
@@ -18,17 +19,21 @@
     }
 
    public static function flush() {
-     $msgs_with_type = static::getSessionAndFlush() ?? [];
+      try {
+        $msgs_with_type = static::getSessionAndFlush() ?? [];
+        foreach($msgs_with_type as $type => $msgs) {
+          if($type === static::DEBUG && !DEBUG) {
+            continue;
+          }
 
-     foreach($msgs_with_type as $type => $msgs) {
-       if($type === static::DEBUG && !DEBUG) {
-         continue;
-       }
-
-       foreach($msgs as $msg) {
-         echo "<div>{$type}:{$msg}</div>";
-       }
-     }
+          foreach($msgs as $msg) {
+            echo "<div>{$type}:{$msg}</div>";
+          }
+        }
+      } catch(Throwable $e) {
+        Msg::push(Msg::DEBUG, $e -> getMessage());
+        Msg::push(Msg::DEBUG, 'exception of flush');
+      }
    }
 
     private static function init() {
