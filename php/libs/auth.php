@@ -33,6 +33,10 @@
 
     public static function regist($user) {
       try {
+        if(!$user->isValidateId()) {
+          return false;
+        }
+
         $is_success = false;
         $exist_user = UserQuery::fetchById($user->id);
     

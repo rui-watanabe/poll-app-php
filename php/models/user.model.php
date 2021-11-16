@@ -1,6 +1,8 @@
 <?php
   namespace model;
 
+  use lib\Msg;
+
   class UserModel extends AbstractModel{
     public $id;
     public $pwd;
@@ -9,7 +11,11 @@
 
     protected static $SESSION_NAME = '_user';
 
-    public static function validate_id($val) {
+    public function isValidateId() {
+      return static::validateId($this->id);
+    }
+
+    public static function validateId($val) {
       $res = true;
 
       if(empty($val)) {
@@ -20,7 +26,7 @@
           Msg::push(Msg::ERROR, 'please user id less than 10 digits');
           $res = false;
         }
-        if(!preg_match("/^[a-zA-Z0-9]+$/")) {
+        if(!preg_match("/^[a-zA-Z0-9]+$/", $val)) {
           Msg::push(Msg::ERROR, 'please user id half alphanumeric');
           $res = false;
         }
