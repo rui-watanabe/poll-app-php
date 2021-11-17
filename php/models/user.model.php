@@ -26,7 +26,7 @@
           Msg::push(Msg::ERROR, 'please user id less than 10 digits');
           $res = false;
         }
-        if(!preg_match("/^[a-zA-Z0-9]+$/", $val)) {
+        if(!is_alnum($val)) {
           Msg::push(Msg::ERROR, 'please user id half alphanumeric');
           $res = false;
         }
