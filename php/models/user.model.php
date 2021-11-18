@@ -34,4 +34,66 @@
 
       return $res;
     }
+
+    public static function validatePwd($val)
+    {
+        $res = true;
+
+        if (empty($val)) {
+
+            Msg::push(Msg::ERROR, 'please input password');
+            $res = false;
+
+        } else {
+
+            if(strlen($val) < 4) {
+
+                Msg::push(Msg::ERROR, 'please password more than 4');
+                $res = false;
+
+            } 
+            
+            if(!is_alnum($val)) {
+
+                Msg::push(Msg::ERROR, 'please password half alphanumeric');
+                $res = false;
+
+            }
+        }
+
+        return $res;
+    }
+
+    public function isValidatePwd()
+    {
+        return static::validatePwd($this->pwd);
+    }
+
+    public static function validateNickname($val)
+    {
+
+        $res = true;
+
+        if (empty($val)) {
+
+            Msg::push(Msg::ERROR, 'please input nickname');
+            $res = false;
+
+        } else {
+
+            if(mb_strlen($val) > 10) {
+
+                Msg::push(Msg::ERROR, 'please user id less than 10 digits');
+                $res = false;
+                
+            } 
+        }
+
+        return $res;
+    }
+
+    public function isValidateNickname()
+    {
+        return static::validateNickname($this->nickname);
+    }
   }
