@@ -8,6 +8,11 @@
   class Auth {
     public static function login($id, $pwd) {
       try {
+        if(!(UserModel::validateId($id) 
+          * UserModel::validatePwd($pwd))) {
+          return false;
+        }
+
         $is_success = false;
         $user = UserQuery::fetchById($id);
     
@@ -33,7 +38,9 @@
 
     public static function regist($user) {
       try {
-        if(!$user->isValidateId()) {
+        if(!($user->isValidateId() 
+          * $user->isValidatePwd()
+          * $user->isValidateNickname())) {
           return false;
         }
 
